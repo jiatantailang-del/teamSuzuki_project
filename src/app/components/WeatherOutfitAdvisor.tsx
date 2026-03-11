@@ -37,34 +37,20 @@ export function WeatherOutfitAdvisor() {
     };
 
     // 気温による基本的な服装提案
-    if (temp <= 5) {
-      recommendation.tops = ["厚手のニット", "タートルネックセーター", "フリースインナー"];
-      recommendation.bottoms = ["厚手のパンツ", "ウールスカート＋タイツ", "レギンス付きパンツ"];
-      recommendation.outerwear = ["ダウンコート", "ウールコート", "中綿入りジャケット"];
-      recommendation.shoes = ["ムートンブーツ", "厚手の靴下＋ブーツ", "スノーブーツ"];
-      recommendation.accessories = ["マフラー", "手袋", "ニット帽", "耳当て"];
-      recommendation.tips = ["しっかり防寒対策をしましょう", "重ね着がおすすめです"];
-    } else if (temp <= 15) {
+    if (temp <= 15) {
       recommendation.tops = ["セーター", "長袖ニット", "厚手のブラウス"];
       recommendation.bottoms = ["パンツ", "ロングスカート＋タイツ", "デニムパンツ"];
       recommendation.outerwear = ["コート", "トレンチコート", "ジャケット"];
       recommendation.shoes = ["ブーツ", "スニーカー", "ローファー"];
       recommendation.accessories = ["ストール", "マフラー"];
       recommendation.tips = ["朝晩は冷えるので羽織物があると安心です"];
-    } else if (temp <= 20) {
+    } else if (temp <= 23) {
       recommendation.tops = ["長袖シャツ", "薄手のニット", "カーディガン"];
       recommendation.bottoms = ["パンツ", "スカート", "ワイドパンツ"];
       recommendation.outerwear = ["薄手のジャケット", "カーディガン", "スプリングコート"];
       recommendation.shoes = ["パンプス", "スニーカー", "フラットシューズ"];
       recommendation.accessories = ["薄手のストール"];
       recommendation.tips = ["重ね着で調節しやすい服装がおすすめです"];
-    } else if (temp <= 25) {
-      recommendation.tops = ["ブラウス", "半袖カットソー", "薄手の長袖シャツ"];
-      recommendation.bottoms = ["スカート", "薄手のパンツ", "ワイドパンツ"];
-      recommendation.outerwear = ["薄手のカーディガン（室内用）"];
-      recommendation.shoes = ["パンプス", "サンダル", "スニーカー"];
-      recommendation.accessories = ["帽子（日よけ）", "サングラス"];
-      recommendation.tips = ["日差しが強いので日焼け対策を忘れずに"];
     } else {
       recommendation.tops = ["半袖Tシャツ", "ノースリーブトップス", "リネンシャツ"];
       recommendation.bottoms = ["ショートパンツ", "薄手のスカート", "サマーパンツ"];
@@ -76,21 +62,14 @@ export function WeatherOutfitAdvisor() {
 
     // 天気による追加提案
     if (weather === "雨") {
-      recommendation.outerwear.push("レインコート");
-      recommendation.shoes = ["レインブーツ", "防水加工のシューズ"];
-      recommendation.accessories.push("折りたたみ傘");
       recommendation.tips.push("防水性のある服装がおすすめです");
     } else if (weather === "雪") {
-      recommendation.outerwear.push("防水ダウンコート");
-      recommendation.shoes = ["スノーブーツ", "防水ブーツ"];
-      recommendation.accessories.push("防寒手袋", "マフラー");
       recommendation.tips.push("滑りにくい靴を選びましょう");
     } else if (weather === "曇り") {
       recommendation.tips.push("気温変化に備えて羽織物を持ち歩くと安心です");
     } else if (weather === "晴れ") {
       if (temp >= 20) {
         recommendation.tips.push("紫外線対策をしっかりと");
-        recommendation.accessories.push("UVカットアイテム");
       }
     }
 
