@@ -7,14 +7,14 @@ type OutfitSuggestionProps = {
   recommendation: OutfitRecommendation;
   weather: string;
   temperature: number;
-  region: string;
+
 };
 
 export function OutfitSuggestion({
   recommendation,
   weather,
   temperature,
-  region,
+
 }: OutfitSuggestionProps) {
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -22,10 +22,6 @@ export function OutfitSuggestion({
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-2xl">おすすめの服装</CardTitle>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <MapPin className="size-4" />
-              {region}
-            </div>
           </div>
           <CardDescription className="text-base">
             {weather} / {temperature}°C に最適なコーディネート

@@ -19,13 +19,11 @@ export type OutfitRecommendation = {
 export function WeatherOutfitAdvisor() {
   const [weather, setWeather] = useState<string>("");
   const [temperature, setTemperature] = useState<string>("");
-  const [region, setRegion] = useState<string>("");
   const [recommendation, setRecommendation] = useState<OutfitRecommendation | null>(null);
 
   const getOutfitRecommendation = (
     weather: string,
     temp: number,
-    region: string
   ): OutfitRecommendation => {
     const recommendation: OutfitRecommendation = {
       tops: [],
@@ -99,9 +97,9 @@ export function WeatherOutfitAdvisor() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (weather && temperature && region) {
+    if (weather && temperature) {
       const temp = parseFloat(temperature);
-      const outfit = getOutfitRecommendation(weather, temp, region);
+      const outfit = getOutfitRecommendation(weather, temp);
       setRecommendation(outfit);
     }
   };
@@ -145,7 +143,7 @@ export function WeatherOutfitAdvisor() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="weather">天気</Label>
                   <Select value={weather} onValueChange={setWeather}>
@@ -173,7 +171,7 @@ export function WeatherOutfitAdvisor() {
                   />
                 </div>
 
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="region">地域</Label>
                   <Input
                     id="region"
@@ -181,9 +179,8 @@ export function WeatherOutfitAdvisor() {
                     placeholder="例: 東京"
                     value={region}
                     onChange={(e) => setRegion(e.target.value)}
-                    required
                   />
-                </div>
+                </div> */}
               </div>
 
               <Button type="submit" className="w-full" size="lg">
@@ -198,7 +195,6 @@ export function WeatherOutfitAdvisor() {
             recommendation={recommendation}
             weather={weather}
             temperature={parseFloat(temperature)}
-            region={region}
           />
         )}
       </div>
