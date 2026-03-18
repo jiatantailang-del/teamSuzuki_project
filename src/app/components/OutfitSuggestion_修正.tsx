@@ -3,13 +3,14 @@ import { Badge } from "./ui/badge";
 import { Shirt, ShoppingBag, Glasses, Footprints, Lightbulb, MapPin } from "lucide-react";
 import type { OutfitRecommendation } from "./WeatherOutfitAdvisor";
 
+import SpringWera from "../../images/spring_wear.png"
+
 type OutfitSuggestionProps = {
   recommendation: OutfitRecommendation;
   weather: string;
   temperature: number;
 
 };
-import SpringWera from "../../images/spring_wear.png"
 
 export function OutfitSuggestion({
   recommendation,
@@ -30,10 +31,8 @@ export function OutfitSuggestion({
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 justify-items-center">
-            <p className="text-lg font-semibold text-gray-700 mb-2">服装イメージ</p>
-            <img
-              className="w-35 h-auto object-contain"
-            src={recommendation.imageSrc}/>
+            <p>服装イメージ</p>
+            <img src={SpringWera}/>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* トップス */}
