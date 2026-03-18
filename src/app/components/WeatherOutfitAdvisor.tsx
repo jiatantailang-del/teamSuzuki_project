@@ -7,6 +7,10 @@ import { Button } from "./ui/button";
 import { OutfitSuggestion } from "./OutfitSuggestion";
 import { Cloud, CloudRain, CloudSnow, Sun, CloudDrizzle } from "lucide-react";
 
+import coldWear from "../../images/cold_wear.svg";
+import springWear from "../../images/spring_wear.png";
+import hotWear from "../../images/hot_wear.svg";
+
 export type OutfitRecommendation = {
   tops: string[];
   bottoms: string[];
@@ -14,6 +18,7 @@ export type OutfitRecommendation = {
   shoes: string[];
   accessories: string[];
   tips: string[];
+  imageSrc: string;
 };
 
 export function WeatherOutfitAdvisor() {
@@ -32,6 +37,7 @@ export function WeatherOutfitAdvisor() {
       shoes: [],
       accessories: [],
       tips: [],
+      imageSrc: "",
     };
 
     // 気温による基本的な服装提案
@@ -42,6 +48,7 @@ export function WeatherOutfitAdvisor() {
       recommendation.shoes = ["ブーツ", "スニーカー", "ローファー"];
       recommendation.accessories = ["ストール", "マフラー"];
       recommendation.tips = ["朝晩は冷えるので羽織物があると安心です"];
+      recommendation.imageSrc = coldWear;
     } else if (temp <= 23) {
       recommendation.tops = ["長袖シャツ", "薄手のニット", "カーディガン"];
       recommendation.bottoms = ["パンツ", "スカート", "ワイドパンツ"];
@@ -49,6 +56,7 @@ export function WeatherOutfitAdvisor() {
       recommendation.shoes = ["パンプス", "スニーカー", "フラットシューズ"];
       recommendation.accessories = ["薄手のストール"];
       recommendation.tips = ["重ね着で調節しやすい服装がおすすめです"];
+      recommendation.imageSrc = springWear;
     } else {
       recommendation.tops = ["半袖Tシャツ", "ノースリーブトップス", "リネンシャツ"];
       recommendation.bottoms = ["ショートパンツ", "薄手のスカート", "サマーパンツ"];
@@ -56,6 +64,7 @@ export function WeatherOutfitAdvisor() {
       recommendation.shoes = ["サンダル", "ミュール", "スニーカー"];
       recommendation.accessories = ["帽子", "サングラス", "日傘"];
       recommendation.tips = ["熱中症に注意して水分補給をこまめに", "冷房対策に薄い羽織物があると便利です"];
+      recommendation.imageSrc = hotWear;
     }
 
     // 天気による追加提案
