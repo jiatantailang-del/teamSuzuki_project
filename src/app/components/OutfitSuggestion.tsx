@@ -9,6 +9,7 @@ type OutfitSuggestionProps = {
   temperature: number;
 
 };
+import SpringWera from "../../images/spring_wear.png"
 
 export function OutfitSuggestion({
   recommendation,
@@ -28,16 +29,12 @@ export function OutfitSuggestion({
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {recommendation.imageSrc && (
-            <div className="w-full overflow-hidden rounded-xl shadow-sm">
-              <img
-                src={recommendation.imageSrc}
-                alt="服装のイメージ"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          )}
-
+          <div className="grid grid-cols-1 justify-items-center">
+            <p className="text-lg font-semibold text-gray-700 mb-2">服装イメージ</p>
+            <img
+              className="w-35 h-auto object-contain"
+            src={recommendation.imageSrc}/>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* トップス */}
             <div className="space-y-3">
