@@ -7,9 +7,9 @@ import { Button } from "./ui/button";
 import { OutfitSuggestion } from "./OutfitSuggestion";
 import { Cloud, CloudRain, CloudSnow, Sun, CloudDrizzle } from "lucide-react";
 
-import coldWear from "../../images/cold_wear.svg";
+import winterWear from "../../images/winter_wear.png";
 import springWear from "../../images/spring_wear.png";
-import hotWear from "../../images/hot_wear.svg";
+import summerWear from "../../images/summer_wear.png";
 
 export type OutfitRecommendation = {
   tops: string[];
@@ -42,40 +42,66 @@ export function WeatherOutfitAdvisor() {
 
     // 気温による基本的な服装提案
     if (temp <= 15) {
-      recommendation.tops = ["セーター", "長袖ニット", "厚手のブラウス"];
-      recommendation.bottoms = ["パンツ", "ロングスカート＋タイツ", "デニムパンツ"];
-      recommendation.outerwear = ["コート", "トレンチコート", "ジャケット"];
-      recommendation.shoes = ["ブーツ", "スニーカー", "ローファー"];
-      recommendation.accessories = ["ストール", "マフラー"];
-      recommendation.tips = ["朝晩は冷えるので羽織物があると安心です"];
-      recommendation.imageSrc = coldWear;
+      // recommendation.tops = ["セーター", "長袖ニット", "厚手のブラウス"];
+      recommendation.tops = ["セーター"];
+      // recommendation.bottoms = ["パンツ", "ロングスカート＋タイツ", "デニムパンツ"];
+      recommendation.bottoms = ["パンツ"];
+      // recommendation.outerwear = ["コート", "トレンチコート", "ジャケット"];
+      recommendation.outerwear = ["コート"];
+      // recommendation.shoes = ["ブーツ", "スニーカー", "ローファー"];
+      recommendation.shoes = ["パンプス"];
+      // recommendation.accessories = ["ストール", "マフラー"];
+      recommendation.accessories = ["マフラー"];
+      // recommendation.tips = ["朝晩は冷えるので羽織物があると安心です"];
+      recommendation.tips = ["朝晩は冷えるので羽織物があると安心"];  
+      recommendation.imageSrc = winterWear;
     } else if (temp <= 23) {
-      recommendation.tops = ["長袖シャツ", "薄手のニット", "カーディガン"];
-      recommendation.bottoms = ["パンツ", "スカート", "ワイドパンツ"];
-      recommendation.outerwear = ["薄手のジャケット", "カーディガン", "スプリングコート"];
-      recommendation.shoes = ["パンプス", "スニーカー", "フラットシューズ"];
-      recommendation.accessories = ["薄手のストール"];
-      recommendation.tips = ["重ね着で調節しやすい服装がおすすめです"];
+      // recommendation.tops = ["長袖シャツ", "薄手のニット", "カーディガン"];
+      recommendation.tops = ["長袖シャツ"];
+      // recommendation.bottoms = ["パンツ", "スカート", "ワイドパンツ"];
+      recommendation.bottoms = ["スカート"];
+      // recommendation.outerwear = ["薄手のジャケット", "カーディガン", "スプリングコート"];
+      recommendation.outerwear = ["トレンチコート"];
+      // recommendation.shoes = ["パンプス", "スニーカー", "フラットシューズ"];
+      recommendation.shoes = ["パンプス"];
+      // recommendation.accessories = ["薄手のストール"];
+      recommendation.accessories = [];
+      // recommendation.tips = ["重ね着で調節しやすい服装がおすすめです"];
+      recommendation.tips = ["重ね着で調節しやすい服装がおすすめ"];      
       recommendation.imageSrc = springWear;
     } else {
-      recommendation.tops = ["半袖Tシャツ", "ノースリーブトップス", "リネンシャツ"];
-      recommendation.bottoms = ["ショートパンツ", "薄手のスカート", "サマーパンツ"];
+      // recommendation.tops = ["半袖Tシャツ", "ノースリーブトップス", "リネンシャツ"];
+      recommendation.tops = ["半袖Tシャツ"];
+      // recommendation.bottoms = ["ショートパンツ", "薄手のスカート", "サマーパンツ"];
+      recommendation.bottoms = ["薄手のスカート"];
       recommendation.outerwear = ["薄手の羽織（冷房対策）"];
-      recommendation.shoes = ["サンダル", "ミュール", "スニーカー"];
-      recommendation.accessories = ["帽子", "サングラス", "日傘"];
-      recommendation.tips = ["熱中症に注意して水分補給をこまめに", "冷房対策に薄い羽織物があると便利です"];
-      recommendation.imageSrc = hotWear;
+      // recommendation.shoes = ["サンダル", "ミュール", "スニーカー"];
+      recommendation.shoes = ["ミュール"];
+      // recommendation.accessories = ["帽子", "サングラス", "日傘"];
+      recommendation.accessories = [];
+      // recommendation.tips = ["熱中症に注意して水分補給をこまめに", "冷房対策に薄い羽織物があると便利です"];
+      recommendation.tips = ["熱中症に注意して水分補給をこまめに", "冷房対策に薄い羽織物があると便利"];
+      recommendation.imageSrc = summerWear;
     }
 
     // 天気による追加提案
     if (weather === "雨") {
-      recommendation.tips.push("防水性のある服装がおすすめです");
+      recommendation.bottoms.push ("白以外のボトムス");
+      recommendation.accessories.push ("傘");
+      recommendation.shoes.push ("レインブーツ");
+      // recommendation.tips.push("防水性のある服装がおすすめです");
+      recommendation.tips.push("防水性のある服装がおすすめ");
     } else if (weather === "雪") {
-      recommendation.tips.push("滑りにくい靴を選びましょう");
+      recommendation.accessories.push ("傘");
+      recommendation.shoes.push ("ブーツ");
+      // recommendation.tips.push("滑りにくい靴を選びましょう");
+      recommendation.tips.push("滑りにくい靴を選ぼう");
     } else if (weather === "曇り") {
-      recommendation.tips.push("気温変化に備えて羽織物を持ち歩くと安心です");
+      // recommendation.tips.push("気温変化に備えて羽織物を持ち歩くと安心です");
+      recommendation.tips.push("降水確率を確認して折り畳み傘を忘れずに");
     } else if (weather === "晴れ") {
-      if (temp >= 20) {
+      if (temp >= 24) {
+        recommendation.accessories = ["日傘"];
         recommendation.tips.push("紫外線対策をしっかりと");
       }
     }
@@ -112,10 +138,10 @@ export function WeatherOutfitAdvisor() {
       <div className="max-w-4xl mx-auto space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold text-[#db7093] font-[\'たらふく_Min2\']">
-            天気に合わせた服装提案
+            おてんきクローゼット
           </h1>
           <p className="text-gray-600">
-            今日の天気と気温を入力して、ぴったりの服装を見つけましょう
+            今日の天気と気温にぴったりな服装を教えるよ！
           </p>
         </div>
 
@@ -123,11 +149,11 @@ export function WeatherOutfitAdvisor() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               {getWeatherIcon()}
-              気象情報を入力
+              現在の天気と気温を入力してね
             </CardTitle>
-            <CardDescription>
-              お住まいの地域の天気と気温を教えてください
-            </CardDescription>
+            {/* <CardDescription>
+              現在の天気と気温を入力してね
+            </CardDescription> */}
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
