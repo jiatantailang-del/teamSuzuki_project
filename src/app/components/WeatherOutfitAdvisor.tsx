@@ -7,9 +7,9 @@ import { Button } from "./ui/button";
 import { OutfitSuggestion } from "./OutfitSuggestion";
 import { Cloud, CloudRain, CloudSnow, Sun, CloudDrizzle } from "lucide-react";
 
-import coldWear from "../../images/cold_wear.svg";
+import winterWear from "../../images/winter_wear.png";
 import springWear from "../../images/spring_wear.png";
-import hotWear from "../../images/hot_wear.svg";
+import summerWear from "../../images/summer_wear.png";
 
 export type OutfitRecommendation = {
   tops: string[];
@@ -54,7 +54,7 @@ export function WeatherOutfitAdvisor() {
       recommendation.accessories = ["マフラー"];
       // recommendation.tips = ["朝晩は冷えるので羽織物があると安心です"];
       recommendation.tips = ["朝晩は冷えるので羽織物があると安心"];  
-      recommendation.imageSrc = coldWear;
+      recommendation.imageSrc = winterWear;
     } else if (temp <= 23) {
       // recommendation.tops = ["長袖シャツ", "薄手のニット", "カーディガン"];
       recommendation.tops = ["長袖シャツ"];
@@ -81,7 +81,7 @@ export function WeatherOutfitAdvisor() {
       recommendation.accessories = [];
       // recommendation.tips = ["熱中症に注意して水分補給をこまめに", "冷房対策に薄い羽織物があると便利です"];
       recommendation.tips = ["熱中症に注意して水分補給をこまめに", "冷房対策に薄い羽織物があると便利"];
-      recommendation.imageSrc = hotWear;
+      recommendation.imageSrc = summerWear;
     }
 
     // 天気による追加提案
